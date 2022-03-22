@@ -1,10 +1,7 @@
 import type { NextPage } from "next"
-import { useRouter } from "next/router"
 import Avatar from "@mui/material/Avatar"
 import Button from "@mui/material/Button"
 import TextField from "@mui/material/TextField"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import Checkbox from "@mui/material/Checkbox"
 import Link from "next/link"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
@@ -12,8 +9,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined"
 import Typography from "@mui/material/Typography"
 import { AuthLayout } from "../components/layouts/auth-layout"
 
-const Login: NextPage = () => {
-  const router = useRouter()
+const ForgotPassword: NextPage = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
@@ -37,7 +33,7 @@ const Login: NextPage = () => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Reset Password
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -45,37 +41,23 @@ const Login: NextPage = () => {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Enter your email address"
             name="email"
             autoComplete="email"
             autoFocus
           />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+
           <Button
-            onClick={() => router.push("/home")}
             type="submit"
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Reset password
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="/forgot-password">Forgot password?</Link>
+              <Link href="/">Sign in</Link>
             </Grid>
             <Grid item>
               <Link href="/signup">{"Don't have an account? Sign Up"}</Link>
@@ -87,4 +69,4 @@ const Login: NextPage = () => {
   )
 }
 
-export default Login
+export default ForgotPassword
