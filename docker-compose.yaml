@@ -2,4 +2,4 @@ services:
   frontend:
     build: ./client
     ports:
-      - "5001:3000"
+      - "8488:3000"

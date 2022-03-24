@@ -1,11 +1,24 @@
-import { createServer, IncomingMessage, Server, ServerResponse } from "http"
+import { Server, ServerCredentials } from "@grpc/grpc-js"
+import { protoIndex } from "./grpc/proto-output"
+import { registerServices } from "./grpc/services"
 
-const server: Server = createServer(handler)
+protoIndex()
+const port: number = 55555
 
-function handler(req: IncomingMessage, res: ServerResponse): void {
-  res.end("Ts Nodejs project")
+function startServer() {
+  let server: Server = new Server()
+
+  server = registerServices(server)
+  server.bindAsync(
+    `127.0.0.1:${port}`,
+    ServerCredentials.createInsecure(),
+    (err: Error | null, port: number) => {
+      if (err != null) {
+        return console.error(err)
+      }
+      console.log(`gRPC listening on ${port}`)
+    }
+  )
 }
 
-server.listen(8400, () => {
-    console.log('app started listening on port 8400')
-})
+startServer()
