@@ -1,7 +1,7 @@
 import { Server, ServerCredentials } from "@grpc/grpc-js"
-import { registerServices } from "./grpc/services"
+import { registerServices } from "./services"
 
-// protoIndex() 
+// protoIndex()
 const port: number = 55555
 
 function startServer() {
@@ -9,13 +9,14 @@ function startServer() {
 
   server = registerServices(server)
   server.bindAsync(
-    `127.0.0.1:${port}`,
+    "0.0.0.0:55299",
     ServerCredentials.createInsecure(),
     (err: Error | null, port: number) => {
       if (err != null) {
         return console.error(err)
       }
-      console.log(`gRPC listening on ${port}`)
+      server.start()
+      console.log(`gRPC Server listening on ${port}`)
     }
   )
 }
