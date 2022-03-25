@@ -1,8 +1,7 @@
 import { Server, ServerCredentials } from "@grpc/grpc-js"
-import { protoIndex } from "./grpc/proto-output"
 import { registerServices } from "./grpc/services"
 
-protoIndex()
+// protoIndex() 
 const port: number = 55555
 
 function startServer() {
