@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.5.9",
+    "dotenv": "^16.0.0",
     "grpc": "^1.24.11"
   }
 }
