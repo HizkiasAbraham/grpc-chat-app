@@ -4,9 +4,8 @@
   "description": "Node grpc typescript server",
   "main": "main.ts",
   "scripts": {
-    "start": "ts-node main.ts",
-    "dev": "ts-node-dev ./grpc/impl.ts",
-    "protoc": "bash ./scripts/protoc.sh",
+    "start": "bash ./scripts/protoc.sh && tsc && node ./build/main.js",
+    "dev": "nodemon --watch services main.ts --exec \"npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hizkias Abraham",

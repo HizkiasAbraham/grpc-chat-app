@@ -12,5 +12,5 @@ for f in ./protos/*; do
         --defaults \
         --oneofs \
         --grpcLib=@grpc/grpc-js \
-        --outDir=./server/grpc/proto-output $f
+        --outDir=./server/grpc/protos $f
 done
