@@ -1,5 +1,9 @@
 services:
-  frontend:
-    build: ./client
-    ports:
-      - "8488:3000"
+  # frontend:
+  #   build: ./client
+  #   ports:
+  #     - "8488:3000"
+  db:
+   image: mongo
+   ports:
+     - "27017:27017"
