@@ -1,9 +1,9 @@
 import { Server, ServerCredentials } from "@grpc/grpc-js"
+import { connectDb } from "./data/database"
 import { registerServices } from "./services"
 
 // protoIndex()
 const port: number = 55555
-
 function startServer() {
   let server: Server = new Server()
 
@@ -21,4 +21,10 @@ function startServer() {
   )
 }
 
-startServer()
+connectDb(function (err: string | null, message: string) {
+  if (err) {
+    return console.log(err)
+  }
+  console.log(message)
+  startServer()
+})
